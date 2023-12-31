@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class Basket : MonoBehaviour
@@ -25,6 +27,29 @@ public class Basket : MonoBehaviour
         Vector3 pos = this.transform.position;
         pos.x = mousePos3D.x;
         this.transform.position = pos;
+        int score = int.Parse(scoreGT.text);
+     
+        switch (Level.level)
+        {
+            case 1:
+                if (score >= 1000)
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+                break;
+            case 2:
+                if (score >= 5000)
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+                break;
+            case 3:
+                if (score >= 10000)
+                {
+                    SceneManager.LoadScene("Menu");
+                }
+                break;
+        }
     }
     void OnCollisionEnter(Collision coll)
     {
@@ -41,5 +66,7 @@ public class Basket : MonoBehaviour
         {
             HighScore.score = score;
         }
+
+        
     }
 }

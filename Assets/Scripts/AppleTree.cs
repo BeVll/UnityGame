@@ -14,7 +14,23 @@ public class AppleTree : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switch (Level.level)
+        {
+            case 1:
+                this.speed = 15f;
+                this.secondsBetweenAppleDrops = 1f;
+                break;
+            case 2:
+                this.speed = 25f;
+                this.secondsBetweenAppleDrops = 0.3f;
+                break;
+            case 3:
+                this.speed = 30f;
+                this.secondsBetweenAppleDrops = 0.2f;
+                break;
+        }
         Invoke("DropApple", 2f);
+        
     }
     void DropApple()
     {
@@ -26,6 +42,7 @@ public class AppleTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Vector3 pos = transform.position;
         pos.x += speed * Time.deltaTime;
         transform.position = pos;
@@ -37,6 +54,8 @@ public class AppleTree : MonoBehaviour
         {
             speed = -Mathf.Abs(speed); //змінємо швидкість на відємну в ліво
         }
+
+
     }
     private void FixedUpdate()
     {

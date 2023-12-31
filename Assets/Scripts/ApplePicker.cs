@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class ApplePicker : MonoBehaviour
 {
     [Header("Set in Inspector")]
     public GameObject basketPrefab;
     public int numBaskets = 3;
+    public int currentLevel = 1;
+    public Text currentLevelText;
     public float basketBottomY = -14f;
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
@@ -21,6 +25,8 @@ public class ApplePicker : MonoBehaviour
             tBasket.transform.position = pos;
             basketList.Add(tBasket);
         }
+
+        
     }
 
     public void AppleDestroyed()
@@ -37,7 +43,7 @@ public class ApplePicker : MonoBehaviour
 
         if (basketList.Count == 0)
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Menu");
         }
     }
 }
